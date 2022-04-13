@@ -12,3 +12,7 @@ install.packages("wordcloud")
 ```
 shiny::runApp(appDir = "path/to/project")
 ```
+
+# Using Docker
+
+Dockerfile provided.

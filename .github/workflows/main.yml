@@ -4,15 +4,28 @@ on:
   push:
     branches:
       - master
+  pull_request:
+    branches: [master]
+    types: [opened, synchronize]
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
+  build_test_deploy:
+    runs-on: ubuntu-20.04
     steps:
-      - uses: actions/checkout@v2
-      - uses: akhileshns/heroku-deploy@v3.4.6 # This is the action
+      - uses: actions/checkout@v3
+      - uses: r-lib/actions/setup-r@v2
         with:
-          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-          heroku_app_name: "shiny-wordcloudgenerator"
-          heroku_email: "thangnv2212@gmail.com"
-          usedocker: true
+          use-public-rspm: true
+      - name: Install packages
+        run: install.packages("lintr")
+        shell: Rscript {0}
+      - name: Lint
+        run: lintr::lint_dir()
+        shell: Rscript {0}
+      # - if: ${{ github.event_name == 'push' && !contains(join(github.event.commits.*.message), '#skip') }}
+      #   uses: akhileshns/heroku-deploy@v3.12.12
+      #   with:
+      #     heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+      #     heroku_app_name: "shiny-wordcloudgenerator"
+      #     heroku_email: "thangnv2212@gmail.com"
+      #     usedocker: true
