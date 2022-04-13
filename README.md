@@ -5,9 +5,7 @@ Generate a word cloud from text input.
 # Run locally
 From R console:
 ```
-install.packages("shiny")
-install.packages("tm") # text mining
-install.packages("wordcloud")
+install.packages(c('wordcloud', 'tm', 'shiny'))
 ```
 ```
 shiny::runApp(appDir = "path/to/project")

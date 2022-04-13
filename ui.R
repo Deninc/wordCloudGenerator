@@ -1,9 +1,9 @@
 shinyUI(bootstrapPage(
-    
+
     fluidPage(
-        
+
         headerPanel("Word cloud generator"),
-        
+
         sidebarPanel(
             p("Copy your text book, song lyrics... to the text area, then click Generate cloud!"),
             p("Example lyric: https://www.azlyrics.com/lyrics/johnlennon/imagine.html"),
@@ -17,11 +17,11 @@ shinyUI(bootstrapPage(
                          inline = TRUE),
             actionButton("submit", "Generate Cloud!")
         ),
-        
+
         mainPanel(
-            plotOutput("cloud")  
+            plotOutput("cloud")
         )
-    
+
     )
-    
+
 ))
