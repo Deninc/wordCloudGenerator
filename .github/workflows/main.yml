@@ -11,6 +11,8 @@ on:
 jobs:
   build_test_deploy:
     runs-on: ubuntu-20.04
+    env:
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - uses: actions/checkout@v3
       - uses: r-lib/actions/setup-r@v2
