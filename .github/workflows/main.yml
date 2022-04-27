@@ -32,4 +32,4 @@ jobs:
           heroku_email: "thangnv2212@gmail.com"
           healthcheck: https://shiny-wordcloudgenerator.herokuapp.com/
           rollbackonhealthcheckfailed: true
-          usedocker: true
+          # usedocker: true
