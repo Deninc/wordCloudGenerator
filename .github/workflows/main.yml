@@ -30,4 +30,6 @@ jobs:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: "shiny-wordcloudgenerator"
           heroku_email: "thangnv2212@gmail.com"
+          healthcheck: https://shiny-wordcloudgenerator.herokuapp.com/
+          rollbackonhealthcheckfailed: true
           usedocker: true
