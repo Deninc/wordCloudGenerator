@@ -11,8 +11,8 @@ shinyUI(bootstrapPage(
                  <textarea id="text" rows="5" cols="35">Insert text...</textarea>'),
             hr(),
             p("Feel free to try different settings!"),
-            sliderInput("max", "Maximum number of words appear in the cloud:", min=5, max=50, value=20),
-            radioButtons("color", "Choose color palette:", 
+            sliderInput("max", "Maximum number of words appear in the cloud:", min = 5, max = 50, value = 20),
+            radioButtons("color", "Choose color palette:",
                          c("Colorful" = "colorful", "Black" = "black"),
                          inline = TRUE),
             actionButton("submit", "Generate Cloud!")
