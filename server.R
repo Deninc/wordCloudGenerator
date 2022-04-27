@@ -1,16 +1,5 @@
-library(tm)
 library(wordcloud)
-
-preprocess <- function(text) {
-    # read input and pre preprocessing
-    text <- isolate(Corpus(VectorSource(text)))
-    text <- tm_map(text, stripWhitespace)
-    text <- tm_map(text, removePunctuation)
-    text <- tm_map(text, content_transformer(tolower))
-    text <- tm_map(text, removeWords, stopwords("english"))
-
-    return(text)
-}
+source("preprocess.R")
 
 shinyServer(function(input, output) {
     output$cloud <- renderPlot({

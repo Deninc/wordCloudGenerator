@@ -1,9 +1,8 @@
 FROM rocker/r-ver:4
 WORKDIR /srv/shiny-server/
 
-RUN install2.r --error shiny wordcloud tm
-
-RUN useradd -m shiny && \
+RUN install2.r --error shiny wordcloud quanteda && \
+    useradd -m shiny && \
     chown shiny:shiny /srv/shiny-server/
 
 COPY server.R ui.R run.R ./
