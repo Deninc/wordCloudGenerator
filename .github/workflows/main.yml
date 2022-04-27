@@ -20,10 +20,13 @@ jobs:
           use-public-rspm: true
           r-version: '4.1.3'
       - uses: r-lib/actions/setup-renv@v2
-      - name: Install lintr
-        run: Rscript -e "install.packages('remotes')" -e "remotes::install_github('jimhester/lintr')"
-      - name: Lint
+      - name: Install extra dependencies
+        run: Rscript -e "install.packages('remotes', 'testthat')" -e "remotes::install_github('jimhester/lintr')"
+      - name: Linting
         run: quit(save = "no", status = length(lintr::lint_dir()))
+        shell: Rscript {0}
+      - name: Testing
+        run: test_dir("tests")
         shell: Rscript {0}
       - if: ${{ github.event_name == 'push' && !contains(join(github.event.commits.*.message), '#skip') }}
         uses: akhileshns/heroku-deploy@v3.12.12
