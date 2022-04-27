@@ -26,7 +26,7 @@ jobs:
         run: quit(save = "no", status = length(lintr::lint_dir()))
         shell: Rscript {0}
       - name: Testing
-        run: test_dir("tests")
+        run: testthat::test_dir("tests")
         shell: Rscript {0}
       - if: ${{ github.event_name == 'push' && !contains(join(github.event.commits.*.message), '#skip') }}
         uses: akhileshns/heroku-deploy@v3.12.12
