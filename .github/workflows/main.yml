@@ -20,8 +20,7 @@ jobs:
           use-public-rspm: true
       - uses: r-lib/actions/setup-renv@v2
       - name: Install lintr
-        run: remotes::install_github("jimhester/lintr")
-        shell: Rscript {0}
+        run: Rscript -e "install.packages('remotes')" -e "remotes::install_github("jimhester/lintr")"
       - name: Lint
         run: quit(save = "no", status = length(lintr::lint_dir()))
         shell: Rscript {0}
