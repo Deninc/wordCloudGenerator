@@ -22,12 +22,12 @@ jobs:
         with:
           extra-packages: any::lintr
       - name: Lint
-        run: lintr::lint_dir()
+        run: quit(save = "no", status = length(lintr::lint_dir()))
         shell: Rscript {0}
-      # - if: ${{ github.event_name == 'push' && !contains(join(github.event.commits.*.message), '#skip') }}
-      #   uses: akhileshns/heroku-deploy@v3.12.12
-      #   with:
-      #     heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-      #     heroku_app_name: "shiny-wordcloudgenerator"
-      #     heroku_email: "thangnv2212@gmail.com"
-      #     usedocker: true
+      - if: ${{ github.event_name == 'push' && !contains(join(github.event.commits.*.message), '#skip') }}
+        uses: akhileshns/heroku-deploy@v3.12.12
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: "shiny-wordcloudgenerator"
+          heroku_email: "thangnv2212@gmail.com"
+          usedocker: true
