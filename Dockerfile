@@ -5,7 +5,7 @@ RUN install2.r --error shiny wordcloud quanteda && \
     useradd -m shiny && \
     chown shiny:shiny /srv/shiny-server/
 
-COPY server.R ui.R run.R ./
+COPY *.R ./
 ENV PORT=3838
 
 USER shiny

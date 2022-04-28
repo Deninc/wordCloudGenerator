@@ -1,4 +1,4 @@
-library(wordcloud)
+library(quanteda.textplots)
 source("preprocess.R")
 
 shinyServer(function(input, output) {
@@ -8,11 +8,10 @@ shinyServer(function(input, output) {
         text <- preprocess(input$text)
 
         if (input$color == "colorful") {
-            wordcloud(text, max.words = input$max, scale = c(4, .5),
-                      colors = brewer.pal(8, "Dark2"), random.order = FALSE, rot.per = .2)
+            textplot_wordcloud(quanteda::dfm(text), min_count = 2, max_words = input$max,
+            color = rev(RColorBrewer::brewer.pal(8, "Dark2")))
         } else {
-            wordcloud(text, max.words = input$max, scale = c(4, .5),
-                      random.order = FALSE, rot.per = .2)
+            textplot_wordcloud(dfm(text), min_count = 2, max_words = input$max, color = "black")
         }
     })
 })
