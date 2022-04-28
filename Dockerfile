@@ -1,7 +1,7 @@
 FROM rocker/r-ver:4
 WORKDIR /srv/shiny-server/
 
-RUN install2.r --error shiny wordcloud quanteda && \
+RUN install2.r --error shiny quanteda quanteda.textplots && \
     useradd -m shiny && \
     chown shiny:shiny /srv/shiny-server/
 
