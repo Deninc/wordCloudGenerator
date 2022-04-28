@@ -11,7 +11,7 @@ shinyServer(function(input, output) {
             textplot_wordcloud(quanteda::dfm(text), min_count = 2, max_words = input$max,
             color = rev(RColorBrewer::brewer.pal(8, "Dark2")))
         } else {
-            textplot_wordcloud(dfm(text), min_count = 2, max_words = input$max, color = "black")
+            textplot_wordcloud(quanteda::dfm(text), min_count = 2, max_words = input$max, color = "black")
         }
     })
 })
